@@ -41,9 +41,11 @@
                             </div>
 
                             <div class="calc-button-row">
-                                <div class="button"><</div>
+                                <div class="button" onclick="clickEliminateBtn(true)"><</div>
+
                                 <div class="button" onclick = "submitPin('0')">0</div>
-                                <div class="button">C</div>
+
+                                <div class="button" onclick="clickEliminateBtn(false)">C</div>
                             </div>
                             <div>
                                 <button type="submit" id="submit-button" class="submit-btn">Submit</button>
@@ -91,6 +93,20 @@
             document.getElementById('submission-display').value = submissionDisplay;
         }
 
+
+        // Eliminating pins button
+
+        function clickEliminateBtn(btn){
+            let submissionDisplay = document.getElementById('submission-display').value;
+            if(btn == true){
+                submissionDisplay = submissionDisplay.substr(0, submissionDisplay.length - 1);
+            }
+            else if(btn == false){
+                submissionDisplay = '';
+            }       
+            document.getElementById('submission-display').value = submissionDisplay;
+        }
+
         // touch submit button
         document.getElementById('submit-button').addEventListener('click', function(){
             let submissionDisplay = document.getElementById('submission-display').value;
@@ -104,9 +120,6 @@
                 document.getElementById('not-matching').style.display='block';
                 document.getElementById('matching').style.display='none';
             }
-
-            console.log(currentPin);
-            console.log(submissionDisplay);
         })
 
 
