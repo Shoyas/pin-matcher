@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pin Generator</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="shortcut icon" href="image/download.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -49,7 +50,7 @@
                             </div>
                             <div>
                                 <button type="submit" id="submit-button" class="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <p id="counting" class="action-left" > 3 try left</p>
                             </div>
                     </div>
                 </div>
@@ -116,9 +117,10 @@
                 document.getElementById('matching').style.display='block';
                 document.getElementById('not-matching').style.display='none';
             }
-            else{
+            else if( submissionDisplay != currentPin){
                 document.getElementById('not-matching').style.display='block';
                 document.getElementById('matching').style.display='none';
+                
             }
         })
 
