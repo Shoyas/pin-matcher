@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input id="generate-pin-display" class="form-control input-text" type="text" placeholder="_ _ _ _">
+                    <button id="generate-pin" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div id="submission-field" class="input-section half-width">
+                    <input id="submission-display" class="form-control input-text" type="text" placeholder="_ _ _ _">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div id="seven" class="button" onclick = "submitPin('7')">7</div>
+                              <div class="button" onclick = "submitPin('8')">8</div>
+                              <div class="button" onclick = "submitPin('9')">9</div>
+                            </div>
+
+                            <div class="calc-button-row">
+                              <div class="button" onclick = "submitPin('4')">4</div>
+                              <div class="button" onclick = "submitPin('5')">5</div>
+                              <div class="button" onclick = "submitPin('6')">6</div>
+                            </div>
+
+                            <div class="calc-button-row">
+                              <div class="button" onclick = "submitPin('1')">1</div>
+                              <div class="button" onclick = "submitPin('2')">2</div>
+                              <div class="button" onclick = "submitPin('3')">3</div>
+                            </div>
+
+                            <div class="calc-button-row">
+                                <div class="button"><</div>
+                                <div class="button" onclick = "submitPin('0')">0</div>
+                                <div class="button">C</div>
+                            </div>
+                            <div>
+                                <button type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+    
+    <script>
+
+        // Generating pin number using random function and showing display with four pins.
+
+        document.getElementById("generate-pin").addEventListener('click', function(){
+            let generatePin = Math.random() * 10000;
+            let currentPin = Math.floor(generatePin);
+            if(currentPin < 1000){
+                currentPin = 1000;
+                document.getElementById('generate-pin-display').value = currentPin;
+                
+            }
+            else if(currentPin >= 9999){
+                currentPin = 9999;
+                document.getElementById('generate-pin-display').value = currentPin;
+            }
+            else{
+                document.getElementById('generate-pin-display').value = currentPin;
+            }
+
+            
+        })
+
+        // Touch number and display them in four pins coding
+
+        function submitPin(pin){
+            let submissionDisplay = document.getElementById('submission-display').value;
+            submissionDisplay = submissionDisplay + pin;
+            console.log(pin);
+            document.getElementById('submission-display').value = submissionDisplay;
+        }
+
+
+    </script>
+</body>
+</html>
